@@ -229,27 +229,7 @@
       <version>2.6</version>
     </dependency>
 
-    <!--短信发送相关jar包-->
-    <dependency>
-      <groupId>org.apache.axis2</groupId>
-      <artifactId>axis2-kernel</artifactId>
-      <version>1.5.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.axis2</groupId>
-      <artifactId>axis2-adb</artifactId>
-      <version>1.5.1</version>
-    </dependency>
-    <!--<dependency>-->
-    <!--<groupId>org.apache.ws.commons.axiom</groupId>-->
-    <!--<artifactId>axiom-api</artifactId>-->
-    <!--<version>1.2.13</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-    <!--<groupId>org.apache.ws.commons.axiom</groupId>-->
-    <!--<artifactId>axiom-impl</artifactId>-->
-    <!--<version>1.2.8</version>-->
-    <!--</dependency>-->
+
   </dependencies>
 
   <build>
