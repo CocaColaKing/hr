@@ -1,18 +1,34 @@
 package com.jyw.hr.controller;
 
-import com.jyw.hr.iface.IUser;
+import com.jyw.hr.model.User;
 import org.springframework.stereotype.Controller;
-
-import javax.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @author jiangyw
- * @date 2018/10/25 10:37
+ * User:jyw
+ * Date:2018/10/25
+ * Time:23:57
+ * Create by IntelliJ IDEA
  */
-
 @Controller
-public class UserController {
-    @Resource
-    private IUser userService;
+@RequestMapping("user")
+public class UserController extends BaseController {
 
+    @GetMapping("register")
+    public String register(){
+        return "user/register";
+    }
+
+    @ResponseBody
+    @PostMapping("ajaxRegister")
+    public int ajaxRegister(User u){
+        User user = userService.getUserByLoginName(u.getLoginName());
+        if(user!=null){
+            return 0; // 登录名被占用
+        }
+        return userService.add(u);
+    }
 }

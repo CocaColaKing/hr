@@ -3,9 +3,13 @@
 <mapper namespace="com.jyw.hr.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.jyw.hr.model.User">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="VARCHAR" property="uid" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -69,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, nickname, login_name, password, status, create_time, update_time
+    id, uid, nickname, login_name, password, real_name, mobile, email, status, create_time, 
+    update_time
   </sql>
   <select id="selectByExample" parameterType="com.jyw.hr.model.UserExample" resultMap="BaseResultMap">
     select
@@ -102,18 +107,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jyw.hr.model.User">
-    insert into user (id, nickname, login_name, 
-      password, status, create_time, 
-      update_time)
-    values (#{id,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+    insert into user (id, uid, nickname, 
+      login_name, password, real_name, 
+      mobile, email, status, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{loginName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.jyw.hr.model.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="uid != null">
+        uid,
       </if>
       <if test="nickname != null">
         nickname,
@@ -123,6 +133,15 @@
       </if>
       <if test="password != null">
         password,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
       </if>
       <if test="status != null">
         status,
@@ -138,6 +157,9 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
       <if test="nickname != null">
         #{nickname,jdbcType=VARCHAR},
       </if>
@@ -146,6 +168,15 @@
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=TINYINT},
@@ -170,6 +201,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.uid != null">
+        uid = #{record.uid,jdbcType=VARCHAR},
+      </if>
       <if test="record.nickname != null">
         nickname = #{record.nickname,jdbcType=VARCHAR},
       </if>
@@ -178,6 +212,15 @@
       </if>
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realName != null">
+        real_name = #{record.realName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mobile != null">
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=TINYINT},
@@ -196,9 +239,13 @@
   <update id="updateByExample" parameterType="map">
     update user
     set id = #{record.id,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=VARCHAR},
       nickname = #{record.nickname,jdbcType=VARCHAR},
       login_name = #{record.loginName,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
+      real_name = #{record.realName,jdbcType=VARCHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=TINYINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
@@ -209,6 +256,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.jyw.hr.model.User">
     update user
     <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
       <if test="nickname != null">
         nickname = #{nickname,jdbcType=VARCHAR},
       </if>
@@ -217,6 +267,15 @@
       </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=TINYINT},
@@ -232,9 +291,13 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jyw.hr.model.User">
     update user
-    set nickname = #{nickname,jdbcType=VARCHAR},
+    set uid = #{uid,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
       login_name = #{loginName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
