@@ -2,18 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jyw.hr.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.jyw.hr.model.User">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
-    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
-    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
-    <result column="is_delete" jdbcType="BIT" property="isDelete" />
-    <result column="gender" jdbcType="BIT" property="gender" />
-    <result column="age" jdbcType="VARCHAR" property="age" />
-    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,8 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, gmt_create, gmt_modified, real_name, nickname, login_name, password, mobile, 
-    is_delete, gender, age, position
+    id, nickname, login_name, password, status, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.jyw.hr.model.UserExample" resultMap="BaseResultMap">
     select
@@ -91,15 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from user
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.jyw.hr.model.UserExample">
     delete from user
@@ -108,29 +102,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jyw.hr.model.User">
-    insert into user (id, gmt_create, gmt_modified, 
-      real_name, nickname, login_name, 
-      password, mobile, is_delete, 
-      gender, age, position)
-    values (#{id,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{realName,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{isDelete,jdbcType=BIT}, 
-      #{gender,jdbcType=BIT}, #{age,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR})
+    insert into user (id, nickname, login_name, 
+      password, status, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.jyw.hr.model.User">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
-      </if>
-      <if test="gmtCreate != null">
-        gmt_create,
-      </if>
-      <if test="gmtModified != null">
-        gmt_modified,
-      </if>
-      <if test="realName != null">
-        real_name,
       </if>
       <if test="nickname != null">
         nickname,
@@ -141,34 +124,19 @@
       <if test="password != null">
         password,
       </if>
-      <if test="mobile != null">
-        mobile,
+      <if test="status != null">
+        status,
       </if>
-      <if test="isDelete != null">
-        is_delete,
+      <if test="createTime != null">
+        create_time,
       </if>
-      <if test="gender != null">
-        gender,
-      </if>
-      <if test="age != null">
-        age,
-      </if>
-      <if test="position != null">
-        position,
+      <if test="updateTime != null">
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="gmtCreate != null">
-        #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModified != null">
-        #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
-      <if test="realName != null">
-        #{realName,jdbcType=VARCHAR},
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="nickname != null">
         #{nickname,jdbcType=VARCHAR},
@@ -179,20 +147,14 @@
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="mobile != null">
-        #{mobile,jdbcType=VARCHAR},
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
       </if>
-      <if test="isDelete != null">
-        #{isDelete,jdbcType=BIT},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="gender != null">
-        #{gender,jdbcType=BIT},
-      </if>
-      <if test="age != null">
-        #{age,jdbcType=VARCHAR},
-      </if>
-      <if test="position != null">
-        #{position,jdbcType=VARCHAR},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -206,16 +168,7 @@
     update user
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=BIGINT},
-      </if>
-      <if test="record.gmtCreate != null">
-        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.gmtModified != null">
-        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.realName != null">
-        real_name = #{record.realName,jdbcType=VARCHAR},
+        id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.nickname != null">
         nickname = #{record.nickname,jdbcType=VARCHAR},
@@ -226,20 +179,14 @@
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.mobile != null">
-        mobile = #{record.mobile,jdbcType=VARCHAR},
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=TINYINT},
       </if>
-      <if test="record.isDelete != null">
-        is_delete = #{record.isDelete,jdbcType=BIT},
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.gender != null">
-        gender = #{record.gender,jdbcType=BIT},
-      </if>
-      <if test="record.age != null">
-        age = #{record.age,jdbcType=VARCHAR},
-      </if>
-      <if test="record.position != null">
-        position = #{record.position,jdbcType=VARCHAR},
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -248,18 +195,13 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user
-    set id = #{record.id,jdbcType=BIGINT},
-      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
-      real_name = #{record.realName,jdbcType=VARCHAR},
+    set id = #{record.id,jdbcType=INTEGER},
       nickname = #{record.nickname,jdbcType=VARCHAR},
       login_name = #{record.loginName,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      mobile = #{record.mobile,jdbcType=VARCHAR},
-      is_delete = #{record.isDelete,jdbcType=BIT},
-      gender = #{record.gender,jdbcType=BIT},
-      age = #{record.age,jdbcType=VARCHAR},
-      position = #{record.position,jdbcType=VARCHAR}
+      status = #{record.status,jdbcType=TINYINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -267,15 +209,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.jyw.hr.model.User">
     update user
     <set>
-      <if test="gmtCreate != null">
-        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="gmtModified != null">
-        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      </if>
-      <if test="realName != null">
-        real_name = #{realName,jdbcType=VARCHAR},
-      </if>
       <if test="nickname != null">
         nickname = #{nickname,jdbcType=VARCHAR},
       </if>
@@ -285,37 +218,26 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="mobile != null">
-        mobile = #{mobile,jdbcType=VARCHAR},
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
       </if>
-      <if test="isDelete != null">
-        is_delete = #{isDelete,jdbcType=BIT},
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="gender != null">
-        gender = #{gender,jdbcType=BIT},
-      </if>
-      <if test="age != null">
-        age = #{age,jdbcType=VARCHAR},
-      </if>
-      <if test="position != null">
-        position = #{position,jdbcType=VARCHAR},
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.jyw.hr.model.User">
     update user
-    set gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
-      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
-      real_name = #{realName,jdbcType=VARCHAR},
-      nickname = #{nickname,jdbcType=VARCHAR},
+    set nickname = #{nickname,jdbcType=VARCHAR},
       login_name = #{loginName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      mobile = #{mobile,jdbcType=VARCHAR},
-      is_delete = #{isDelete,jdbcType=BIT},
-      gender = #{gender,jdbcType=BIT},
-      age = #{age,jdbcType=VARCHAR},
-      position = #{position,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

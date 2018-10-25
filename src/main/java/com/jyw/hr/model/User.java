@@ -3,13 +3,7 @@ package com.jyw.hr.model;
 import java.util.Date;
 
 public class User {
-    private Long id;
-
-    private Date gmtCreate;
-
-    private Date gmtModified;
-
-    private String realName;
+    private Integer id;
 
     private String nickname;
 
@@ -17,46 +11,18 @@ public class User {
 
     private String password;
 
-    private String mobile;
+    private Byte status;
 
-    private Boolean isDelete;
+    private Date createTime;
 
-    private Boolean gender;
+    private Date updateTime;
 
-    private String age;
-
-    private String position;
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Date getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public Date getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Date gmtModified) {
-        this.gmtModified = gmtModified;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName == null ? null : realName.trim();
     }
 
     public String getNickname() {
@@ -83,43 +49,27 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getMobile() {
-        return mobile;
+    public Byte getStatus() {
+        return status;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile == null ? null : mobile.trim();
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
-    public Boolean getIsDelete() {
-        return isDelete;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setIsDelete(Boolean isDelete) {
-        this.isDelete = isDelete;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Boolean getGender() {
-        return gender;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setGender(Boolean gender) {
-        this.gender = gender;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age == null ? null : age.trim();
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position == null ? null : position.trim();
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }
