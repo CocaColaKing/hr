@@ -9,7 +9,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库链接地址账号密码-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://47.100.42.1:3306/hr" userId="jyw" password="jyw123456">
+        <jdbcConnection driverClass="oracle.jdbc.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:1521:xe" userId="test" password="test123456">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -41,7 +41,7 @@
             <!--<columnOverride column="age" property="age" javaType="java.lang.Integer"/>-->
         <!--</table>-->
         <!--<table tableName="product"/>-->
-        <table tableName="user"/>
+        <table tableName="user" />
         <!--<table tableName="pay_record">
             <columnOverride column="record_type" property="recordType" javaType="com.jywhy.springbootdemo.enumeration.RecorderType"/>
         </table>-->

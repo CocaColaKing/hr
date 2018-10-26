@@ -74,7 +74,7 @@
                                             <label class="col-sm-1 control-label">密码:</label>
                                             <div class="col-sm-2">
                                                 <label>
-                                                    <input id="pwd1" name="password" type="password" class="form-control must-write-input" value="" placeholder="" onkeyup="value=value.replace(/\s+/,'')"/><span class="must-write text-center">*</span>
+                                                    <input id="pwd1" name="pwd" type="password" class="form-control must-write-input" value="" placeholder="" onkeyup="value=value.replace(/\s+/,'')"/><span class="must-write text-center">*</span>
                                                 </label>
                                             </div>
 

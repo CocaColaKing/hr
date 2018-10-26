@@ -1,6 +1,8 @@
 package com.jyw.hr.controller;
 
 import com.jyw.hr.model.User;
+import com.jyw.hr.model.Visitor;
+import com.jyw.hr.utils.x;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,11 +26,12 @@ public class UserController extends BaseController {
 
     @ResponseBody
     @PostMapping("ajaxRegister")
-    public int ajaxRegister(User u){
-        User user = userService.getUserByLoginName(u.getLoginName());
+    public int ajaxRegister(Visitor u){
+        Visitor user = visitorService.getByLoginName(u.getLoginName());
         if(user!=null){
             return 0; // 登录名被占用
         }
-        return userService.add(u);
+        u.setVisitorId(x.uidGenerator());
+        return visitorService.add(u);
     }
 }

@@ -3,35 +3,25 @@ package com.jyw.hr.model;
 import java.util.Date;
 
 public class User {
-    private Integer id;
-
     private String uid;
-
-    private String nickname;
 
     private String loginName;
 
-    private String password;
-
-    private String realName;
+    private String pwd;
 
     private String mobile;
 
-    private String email;
+    private Short status;
 
-    private Byte status;
+    private String nickname;
+
+    private String realName;
+
+    private String email;
 
     private Date createTime;
 
     private Date updateTime;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUid() {
         return uid;
@@ -39,14 +29,6 @@ public class User {
 
     public void setUid(String uid) {
         this.uid = uid == null ? null : uid.trim();
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
     }
 
     public String getLoginName() {
@@ -57,20 +39,12 @@ public class User {
         this.loginName = loginName == null ? null : loginName.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName == null ? null : realName.trim();
+    public void setPwd(String pwd) {
+        this.pwd = pwd == null ? null : pwd.trim();
     }
 
     public String getMobile() {
@@ -81,20 +55,36 @@ public class User {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName == null ? null : realName.trim();
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
     }
 
     public Date getCreateTime() {

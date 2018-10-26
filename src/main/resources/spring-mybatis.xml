@@ -34,13 +34,13 @@
         <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="${maxWait}"/>
         <!-- 定时任务+按空闲阈值淘汰 以下配置为了解决长时间没有与Mysql交互而断连的问题-->
-        <!-- validation query -->
-        <property name="validationQuery" value="SELECT 1" />
-        <!-- 定时周期间隔 -->
-        <property name="timeBetweenEvictionRunsMillis" value="90000" />
-        <property name="numTestsPerEvictionRun" value="3" />
-        <!-- 空闲连接的生存阈值 -->
-        <property name="minEvictableIdleTimeMillis" value="1800000" />
+        <!--&lt;!&ndash; validation query &ndash;&gt;-->
+        <!--<property name="validationQuery" value="SELECT 1" />-->
+        <!--&lt;!&ndash; 定时周期间隔 &ndash;&gt;-->
+        <!--<property name="timeBetweenEvictionRunsMillis" value="90000" />-->
+        <!--<property name="numTestsPerEvictionRun" value="3" />-->
+        <!--&lt;!&ndash; 空闲连接的生存阈值 &ndash;&gt;-->
+        <!--<property name="minEvictableIdleTimeMillis" value="1800000" />-->
     </bean>
 
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->

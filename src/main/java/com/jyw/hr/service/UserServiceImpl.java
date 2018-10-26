@@ -11,31 +11,33 @@ import java.util.List;
 
 /**
  * @author jiangyw
- * @date 2018/10/25 10:35
+ * @date 2018/10/26 17:25
  */
 @Service("userService")
 public class UserServiceImpl implements IUser {
     @Resource
     private UserMapper userMapper;
 
-
+    @Override
     public int add(User user) {
         return userMapper.insert(user);
     }
 
+    @Override
     public int update(User user) {
         return userMapper.updateByPrimaryKey(user);
     }
 
-    public User getUserByLoginNameAndPassword(String loginName, String password) {
+    @Override
+    public User getByLoginNameAndPassword(String loginName, String password) {
         UserExample example = new UserExample();
-        example.or().andLoginNameEqualTo(loginName).andPasswordEqualTo(password);
+        example.or().andPwdEqualTo(password).andLoginNameEqualTo(loginName);
         List<User> users = userMapper.selectByExample(example);
         return users.isEmpty() ? null : users.get(0);
     }
 
     @Override
-    public User getUserByLoginName(String loginName) {
+    public User getByLoginName(String loginName) {
         UserExample example = new UserExample();
         example.or().andLoginNameEqualTo(loginName);
         List<User> users = userMapper.selectByExample(example);

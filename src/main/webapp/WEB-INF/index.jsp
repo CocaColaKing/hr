@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">密码</label>
-                    <input type="password" name="password" id="inputPassword" onfocus="this.placeholder=''" onblur="this.placeholder=''" placeholder="" class="form-control input-lg">
+                    <input type="password" name="pwd" id="inputPassword" onfocus="this.placeholder=''" onblur="this.placeholder=''" placeholder="" class="form-control input-lg">
                 </div>
                 <%--<div class="checkbox">--%>
                 <%--<label>--%>
