@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
  * @date 2018/10/25 10:37
  */
 
-@RestController
+@RestController  // RestController表明这个Controller里都是restful接口
 @RequestMapping("login")
 public class LoginController extends BaseController {
 

@@ -1,7 +1,6 @@
 package com.jyw.hr.controller;
 
-import com.jyw.hr.iface.IUser;
-import com.jyw.hr.iface.IVisitor;
+import com.jyw.hr.iface.*;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
@@ -14,9 +13,19 @@ import javax.annotation.Resource;
  */
 @Controller
 public class BaseController {
-    @Resource
-    IUser userService;
 
     @Resource
     IVisitor visitorService;
+
+    @Resource
+    IRecruitment recruitmentService;
+
+    @Resource
+    IResume resumeService;
+
+    @Resource
+    IResumeSend resumeSendService;
+
+    @Resource
+    IInterview iInterviewService;
 }
