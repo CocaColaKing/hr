@@ -27,5 +27,5 @@ public class BaseController {
     IResumeSend resumeSendService;
 
     @Resource
-    IInterview iInterviewService;
+    IInterview interviewService;
 }

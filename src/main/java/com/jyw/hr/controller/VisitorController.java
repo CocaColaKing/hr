@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * User:jyw
  * Date:2018/10/25
@@ -16,21 +18,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("user")
-public class UserController extends BaseController {
+public class VisitorController extends BaseController {
 
     @GetMapping("register")
-    public String register(){
+    public String register() {
         return "user/register";
     }
 
     @ResponseBody
     @PostMapping("ajaxRegister")
-    public int ajaxRegister(Visitor u){
+    public int ajaxRegister(Visitor u) {
         Visitor user = visitorService.getByLoginName(u.getLoginName());
-        if(user!=null){
+        if (user != null) {
             return 0; // 登录名被占用
         }
         u.setVisitorId(x.uidGenerator());
         return visitorService.add(u);
+    }
+
+    /**
+     * 游客主页
+     */
+    @GetMapping("index")
+    public String index(HttpSession session) {
+        Visitor visitor = (Visitor) session.getAttribute("visitor");
+
+        return "user/index";
     }
 }

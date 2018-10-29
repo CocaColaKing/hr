@@ -16,4 +16,9 @@ public interface IResumeSend {
      * @return
      */
     int add(ResumeSend resumeSend);
+
+    /**
+     * 根据游客id查询其投递记录
+     */
+    ResumeSend getByVisitor(String visitorId);
 }

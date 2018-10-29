@@ -20,4 +20,10 @@ public class ResumeSendServiceImpl implements IResumeSend {
     public int add(ResumeSend resumeSend) {
         return resumeSendMapper.insert(resumeSend);
     }
+
+    @Override
+    public ResumeSend getByVisitor(String visitorId) {
+
+        return null;
+    }
 }
