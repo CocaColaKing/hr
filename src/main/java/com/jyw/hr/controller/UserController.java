@@ -1,6 +1,5 @@
 package com.jyw.hr.controller;
 
-import com.jyw.hr.model.User;
 import com.jyw.hr.model.Visitor;
 import com.jyw.hr.utils.x;
 import org.springframework.stereotype.Controller;

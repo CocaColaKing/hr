@@ -1,6 +1,5 @@
 package com.jyw.hr.controller;
 
-import com.jyw.hr.model.User;
 import com.jyw.hr.model.Visitor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
