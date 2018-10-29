@@ -3,7 +3,6 @@ package com.jyw.hr.iface;
 import com.jyw.hr.model.Interview;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -32,4 +31,11 @@ public interface IInterview {
      * @return
      */
     int update(Interview interview);
+
+    /**
+     * 根据简历投递id查询面试邀请
+     * @param resumeSendIds
+     * @return
+     */
+    List<Interview> listByResumeSendIds(List<String> resumeSendIds);
 }

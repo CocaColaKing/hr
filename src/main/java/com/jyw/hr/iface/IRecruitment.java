@@ -38,4 +38,6 @@ public interface IRecruitment {
      */
     int del(String recruitmentId);
 
+    Recruitment getById(String recruitmentId);
+
 }

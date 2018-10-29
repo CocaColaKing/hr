@@ -1,11 +1,10 @@
 package com.jyw.hr.service;
 
 import com.jyw.hr.iface.IInterview;
-import com.jyw.hr.iface.IResumeSend;
 import com.jyw.hr.mapper.InterviewMapper;
 import com.jyw.hr.mapper.ResumeSendMapper;
 import com.jyw.hr.model.Interview;
-import com.jyw.hr.model.ResumeSend;
+import com.jyw.hr.model.InterviewExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -44,5 +43,12 @@ public class InterviewServiceImpl implements IInterview {
     @Override
     public int update(Interview interview) {
         return interviewMapper.updateByPrimaryKey(interview);
+    }
+
+    @Override
+    public List<Interview> listByResumeSendIds(List<String> resumeSendIds) {
+        InterviewExample example = new InterviewExample();
+        example.or().andResumeSendIdIn(resumeSendIds);
+        return interviewMapper.selectByExample(example);
     }
 }

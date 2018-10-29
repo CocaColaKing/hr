@@ -1,8 +1,9 @@
 package com.jyw.hr.iface;
 
-import com.jyw.hr.model.Resume;
 import com.jyw.hr.model.ResumeSend;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author jiangyw
@@ -20,5 +21,5 @@ public interface IResumeSend {
     /**
      * 根据游客id查询其投递记录
      */
-    ResumeSend getByVisitor(String visitorId);
+    List<ResumeSend> getByVisitor(String visitorId);
 }

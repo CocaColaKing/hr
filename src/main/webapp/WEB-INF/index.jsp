@@ -35,7 +35,7 @@
                 <%--<a href="#" class="pull-right m-t-xs"><small>Forgot password?</small></a>--%>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">登录</button>
-                    <a href="user/register" class="pull-right m-t-xs" onclick="javascript:void (0)"><small>注册</small></a>
+                    <a href="user/register" target="_blank" class="pull-right m-t-xs" onclick="javascript:void (0)"><small>注册</small></a>
                 </div>
                 <%--<div class="line line-dashed"></div>--%>
                 <%--<a href="#" class="btn btn-facebook btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>Sign in with Facebook</a> <a href="#" class="btn btn-twitter btn-block"><i class="fa fa-twitter pull-left"></i>Sign in with Twitter</a>--%>
@@ -89,7 +89,7 @@
                 if(res == 0){
                     alert("用户名或密码错误")
                 }else if(res == 1 ){
-                    alert("登录成功");
+                    location.href="<%=basePath%>/user/index";
                 }
                 <%--if(res.result==-1){--%>
                     <%--alert("用户名或密码错误");--%>

@@ -37,4 +37,9 @@ public class RecruitmentServiceImpl implements IRecruitment {
     public int del(String recruitmentId) {
         return recruitmentMapper.deleteByPrimaryKey(recruitmentId);
     }
+
+    @Override
+    public Recruitment getById(String recruitmentId) {
+        return recruitmentMapper.selectByPrimaryKey(recruitmentId);
+    }
 }

@@ -3,9 +3,11 @@ package com.jyw.hr.service;
 import com.jyw.hr.iface.IResumeSend;
 import com.jyw.hr.mapper.ResumeSendMapper;
 import com.jyw.hr.model.ResumeSend;
+import com.jyw.hr.model.ResumeSendExample;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author jiangyw
@@ -22,8 +24,9 @@ public class ResumeSendServiceImpl implements IResumeSend {
     }
 
     @Override
-    public ResumeSend getByVisitor(String visitorId) {
-
-        return null;
+    public List<ResumeSend> getByVisitor(String visitorId) {
+        ResumeSendExample example = new ResumeSendExample();
+        example.or().andVisitorIdEqualTo(visitorId);
+        return resumeSendMapper.selectByExample(example);
     }
 }
