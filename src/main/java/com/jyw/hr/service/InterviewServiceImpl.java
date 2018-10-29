@@ -1,8 +1,11 @@
 package com.jyw.hr.service;
 
 import com.jyw.hr.iface.IInterview;
+import com.jyw.hr.iface.IResumeSend;
 import com.jyw.hr.mapper.InterviewMapper;
+import com.jyw.hr.mapper.ResumeSendMapper;
 import com.jyw.hr.model.Interview;
+import com.jyw.hr.model.ResumeSend;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,6 +19,8 @@ import java.util.List;
 public class InterviewServiceImpl implements IInterview {
     @Resource
     private InterviewMapper interviewMapper;
+    @Resource
+    private ResumeSendMapper resumeSendMapper;
 
     @Override
     public int add(Interview interview) {
@@ -25,6 +30,14 @@ public class InterviewServiceImpl implements IInterview {
     @Override
     public List<Interview> listByVisitor(String visitorId) {
         // todo 需要自定义sql
+//        select i.*
+//                from INTERVIEW i,
+//        RESUME_SEND r,
+//        RECRUITMENT r2
+//        where i.RESUME_SEND_ID = r.RESUME_SEND_ID
+//        and r.RECRUITMENT_ID = r2.RECRUITMENT_ID
+//        and r.VISITOR_ID = '42563be13b83';
+
         return null;
     }
 
