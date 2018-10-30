@@ -1204,6 +1204,136 @@ public class ResumeExample {
             addCriterion("EMAIL not between", value1, value2, "email");
             return (Criteria) this;
         }
+
+        public Criteria andTitleIsNull() {
+            addCriterion("TITLE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIsNotNull() {
+            addCriterion("TITLE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleEqualTo(String value) {
+            addCriterion("TITLE =", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotEqualTo(String value) {
+            addCriterion("TITLE <>", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleGreaterThan(String value) {
+            addCriterion("TITLE >", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("TITLE >=", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLessThan(String value) {
+            addCriterion("TITLE <", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLessThanOrEqualTo(String value) {
+            addCriterion("TITLE <=", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleLike(String value) {
+            addCriterion("TITLE like", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotLike(String value) {
+            addCriterion("TITLE not like", value, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleIn(List<String> values) {
+            addCriterion("TITLE in", values, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotIn(List<String> values) {
+            addCriterion("TITLE not in", values, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleBetween(String value1, String value2) {
+            addCriterion("TITLE between", value1, value2, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andTitleNotBetween(String value1, String value2) {
+            addCriterion("TITLE not between", value1, value2, "title");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagIsNull() {
+            addCriterion("DEFAULT_FLAG is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagIsNotNull() {
+            addCriterion("DEFAULT_FLAG is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagEqualTo(Integer value) {
+            addCriterion("DEFAULT_FLAG =", value, "defaultFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagNotEqualTo(Integer value) {
+            addCriterion("DEFAULT_FLAG <>", value, "defaultFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagGreaterThan(Integer value) {
+            addCriterion("DEFAULT_FLAG >", value, "defaultFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagGreaterThanOrEqualTo(Integer value) {
+            addCriterion("DEFAULT_FLAG >=", value, "defaultFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagLessThan(Integer value) {
+            addCriterion("DEFAULT_FLAG <", value, "defaultFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagLessThanOrEqualTo(Integer value) {
+            addCriterion("DEFAULT_FLAG <=", value, "defaultFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagIn(List<Integer> values) {
+            addCriterion("DEFAULT_FLAG in", values, "defaultFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagNotIn(List<Integer> values) {
+            addCriterion("DEFAULT_FLAG not in", values, "defaultFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagBetween(Integer value1, Integer value2) {
+            addCriterion("DEFAULT_FLAG between", value1, value2, "defaultFlag");
+            return (Criteria) this;
+        }
+
+        public Criteria andDefaultFlagNotBetween(Integer value1, Integer value2) {
+            addCriterion("DEFAULT_FLAG not between", value1, value2, "defaultFlag");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

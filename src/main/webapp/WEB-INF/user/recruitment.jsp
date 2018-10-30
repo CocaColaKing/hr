@@ -17,6 +17,9 @@
 <head>
     <title>招聘信息详情</title>
     <link rel="stylesheet" href="<%=basePath%>/css/app.v2.css" type="text/css" />
+    <link  href="<%=basePath%>/js/sweetalert2/sweetalert2.css" rel="stylesheet"/>
+    <link href="<%=basePath%>/css/app.css" rel="stylesheet"/>
+
 
 </head>
 <body>
@@ -61,7 +64,7 @@
 
 
                                     <div class="col-sm-12 text-center">
-                                        <button class="btn btn-primary" type="button">投递简历</button>
+                                        <button class="btn btn-primary" type="button" onclick="{if(${resumes.size() == 0}){alert('无简历，无法投递');}else{$('#customDialog').show()}}">投递简历</button>
                                         <span class="btn btn-primary" onclick="history.back()">返回</span>
                                     </div>
                                 </form>
@@ -74,10 +77,31 @@
         </section>
     </section>
 </section>
+<section id="customDialog" class="custom-dialog-container custom-dialog-shown" style="overflow-y: auto;display: none;">
+    <section role="dialog" class="swal2-modal" style="width: 500px;padding: 20px;background-color: white;display: block;min-height: 100px;">
+        <h2 class="swal2-title">选择简历</h2>
+        <form id="addCategory" onsubmit="return addC()">
+            <div id="dialogContent" class="custom-dialog-shown">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <select id="c3"  class="form-control" title="" style="padding: 0 12px;">
+                            <c:forEach var="item" items="${resumes}">
+                                <option value="${item.resumeId}">${item.title}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <button id="dialogConfirm" onclick="send()" type="button" role="button" class="custom-dialog-confirm swal2-styled">确定</button>
+            <button id="dialogCancel" onclick="{$('#customDialog').hide()}" type="button" role="button" class="custom-dialog-cancel swal2-styled">取消</button>
+        </form>
+    </section>
+</section>
 <script src="<%=basePath%>/js/app.v2.js"></script> <!-- Bootstrap --> <!-- App -->
 <script>
     function send() {
-        $.post("<%=basePath%>/user/sendResume",{recruitmentId:"${param.id}"},function (res) {
+        $.post("<%=basePath%>/user/sendResume",{recruitmentId:"${param.id}",resumeId:$("#c3").val()},function (res) {
             if(res ==1){
                 alert("投递简历成功");
                 history.back();

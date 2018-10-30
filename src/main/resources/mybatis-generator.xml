@@ -42,8 +42,8 @@
         <!--</table>-->
         <!--<table tableName="product"/>-->
         <!--<table tableName="visitor" />-->
-        <table tableName="interview" />
-        <!--<table tableName="resume" />-->
+        <!--<table tableName="interview" />-->
+        <table tableName="resume" />
         <!--<table tableName="resume_send" />-->
         <!--<table tableName="recruitment" />-->
         <!--<table tableName="pay_record">

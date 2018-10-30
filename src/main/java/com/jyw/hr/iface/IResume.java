@@ -3,6 +3,8 @@ package com.jyw.hr.iface;
 import com.jyw.hr.model.Resume;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author jiangyw
  * @date 2018/10/29 19:50
@@ -35,5 +37,11 @@ public interface IResume {
      * @param visitorId
      * @return
      */
-    Resume getResumeByVisitor(String visitorId);
+    List<Resume> listByVisitor(String visitorId);
+
+
+
+    Resume getById(String resumeId);
+
+
 }

@@ -35,6 +35,10 @@ public class Resume {
 
     private String email;
 
+    private String title;
+
+    private Integer defaultFlag;
+
     public String getResumeId() {
         return resumeId;
     }
@@ -161,5 +165,21 @@ public class Resume {
 
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
+    public Integer getDefaultFlag() {
+        return defaultFlag;
+    }
+
+    public void setDefaultFlag(Integer defaultFlag) {
+        this.defaultFlag = defaultFlag;
     }
 }

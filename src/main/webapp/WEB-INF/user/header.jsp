@@ -14,6 +14,11 @@
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="visitor" value="<%=visitor%>"/>
+<div class="navbar-header aside-md">
+    <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a>
+    <a href="<%=basePath%>/user/index" style="width: 300px;" class="navbar-brand" data-toggle="fullscreen"><%--<img src="images/logo.png" class="m-r-sm">--%>人力资源系统</a>
+    <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user"> <i class="fa fa-cog"></i> </a>
+</div>
 <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
     <li class="hidden-xs"><a href="#" class="dropdown-toggle dk" data-toggle="dropdown"> <i class="fa fa-bell"></i>
         <c:if test="${interviews.size()>0}">
@@ -42,7 +47,7 @@
             class="thumb-sm avatar pull-left">  </span> ${visitor.loginName} <b class="caret"></b> </a>
         <ul class="dropdown-menu animated fadeInRight">
             <span class="arrow top"></span>
-            <li><a href="<%=basePath%>/user/resume">编辑简历</a></li>
+            <li><a href="<%=basePath%>/user/myResumes">我的简历</a></li>
             <li class="divider"></li>
             <li><a href="<%=basePath%>" <%--data-toggle="ajaxModal"--%> >登出</a></li>
         </ul>

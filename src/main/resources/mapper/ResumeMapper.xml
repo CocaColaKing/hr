@@ -18,6 +18,8 @@
     <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
     <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="TITLE" jdbcType="VARCHAR" property="title" />
+    <result column="DEFAULT_FLAG" jdbcType="NUMERIC" property="defaultFlag" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -79,7 +81,8 @@
   </sql>
   <sql id="Base_Column_List">
     RESUME_ID, VISITOR_ID, REAL_NAME, MOBILE, GENDER, MAJOR, SCHOOL, BIRTHDAY, ADDRESS, 
-    DESCRIPTION, HOBBY, EDUCATION, WORK_EXPERIENCE, CREATE_TIME, UPDATE_TIME, EMAIL
+    DESCRIPTION, HOBBY, EDUCATION, WORK_EXPERIENCE, CREATE_TIME, UPDATE_TIME, EMAIL, 
+    TITLE, DEFAULT_FLAG
   </sql>
   <select id="selectByExample" parameterType="com.jyw.hr.model.ResumeExample" resultMap="BaseResultMap">
     select
@@ -117,13 +120,15 @@
       SCHOOL, BIRTHDAY, ADDRESS, 
       DESCRIPTION, HOBBY, EDUCATION, 
       WORK_EXPERIENCE, CREATE_TIME, UPDATE_TIME, 
-      EMAIL)
+      EMAIL, TITLE, DEFAULT_FLAG
+      )
     values (#{resumeId,jdbcType=VARCHAR}, #{visitorId,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
       #{mobile,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, 
       #{school,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{description,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
       #{workExperience,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{email,jdbcType=VARCHAR})
+      #{email,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{defaultFlag,jdbcType=NUMERIC}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jyw.hr.model.Resume">
     insert into RESUME
@@ -176,6 +181,12 @@
       <if test="email != null">
         EMAIL,
       </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="defaultFlag != null">
+        DEFAULT_FLAG,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="resumeId != null">
@@ -225,6 +236,12 @@
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultFlag != null">
+        #{defaultFlag,jdbcType=NUMERIC},
       </if>
     </trim>
   </insert>
@@ -285,6 +302,12 @@
       <if test="record.email != null">
         EMAIL = #{record.email,jdbcType=VARCHAR},
       </if>
+      <if test="record.title != null">
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.defaultFlag != null">
+        DEFAULT_FLAG = #{record.defaultFlag,jdbcType=NUMERIC},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -307,7 +330,9 @@
       WORK_EXPERIENCE = #{record.workExperience,jdbcType=VARCHAR},
       CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
-      EMAIL = #{record.email,jdbcType=VARCHAR}
+      EMAIL = #{record.email,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      DEFAULT_FLAG = #{record.defaultFlag,jdbcType=NUMERIC}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -360,6 +385,12 @@
       <if test="email != null">
         EMAIL = #{email,jdbcType=VARCHAR},
       </if>
+      <if test="title != null">
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultFlag != null">
+        DEFAULT_FLAG = #{defaultFlag,jdbcType=NUMERIC},
+      </if>
     </set>
     where RESUME_ID = #{resumeId,jdbcType=VARCHAR}
   </update>
@@ -379,7 +410,9 @@
       WORK_EXPERIENCE = #{workExperience,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
-      EMAIL = #{email,jdbcType=VARCHAR}
+      EMAIL = #{email,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      DEFAULT_FLAG = #{defaultFlag,jdbcType=NUMERIC}
     where RESUME_ID = #{resumeId,jdbcType=VARCHAR}
   </update>
 </mapper>

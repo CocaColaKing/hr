@@ -71,10 +71,17 @@ public class VisitorController extends BaseController {
         return "user/index";
     }
 
-    @GetMapping("resume")
-    public String resume(HttpSession session, Model model) {
+    @GetMapping("myResumes")
+    public String myResumes(HttpSession session, Model model) {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
-        Resume resume = resumeService.getResumeByVisitor(visitor.getVisitorId());
+        List<Resume> resumes = resumeService.listByVisitor(visitor.getVisitorId());
+        model.addAttribute("resumes", resumes);
+        return "user/myResumes";
+    }
+
+    @GetMapping("resume")
+    public String resume(Model model, @RequestParam(value = "id", required = false, defaultValue = "0") String id) {
+        Resume resume = resumeService.getById(id);
         model.addAttribute("resume", resume);
         return "user/resume";
     }
@@ -102,9 +109,12 @@ public class VisitorController extends BaseController {
      * 招聘信息详情
      */
     @GetMapping("recruitment")
-    public String recruitment(@RequestParam("id") String id, Model model) {
+    public String recruitment(@RequestParam("id") String id, Model model, HttpSession session) {
+        Visitor visitor = (Visitor) session.getAttribute("visitor");
         Recruitment recruitment = recruitmentService.getById(id);
+        List<Resume> resumes = resumeService.listByVisitor(visitor.getVisitorId());
         model.addAttribute("recruitment", recruitment);
+        model.addAttribute("resumes", resumes);
         return "user/recruitment";
     }
 
@@ -113,14 +123,14 @@ public class VisitorController extends BaseController {
      */
     @ResponseBody
     @PostMapping("sendResume")
-    public int sendResume(@RequestParam("recruitmentId") String recruitmentId, HttpSession session) {
+    public int sendResume(@RequestParam("recruitmentId") String recruitmentId, HttpSession session, @RequestParam("resumeId") String resumeId) {
         Visitor visitor = (Visitor) session.getAttribute("visitor");
-        Resume resume = resumeService.getResumeByVisitor(visitor.getVisitorId());
+        Resume resume = resumeService.getById(resumeId);
         if (resume == null) {
             return 0;
         }
         ResumeSend send = new ResumeSend();
-        send.setResumeId(x.uidGenerator());
+        send.setResumeSendId(x.uidGenerator());
         send.setCreateTime(new Date());
         send.setRecruitmentId(recruitmentId);
         send.setVisitorId(visitor.getVisitorId());
@@ -130,9 +140,9 @@ public class VisitorController extends BaseController {
 
     @ResponseBody
     @PostMapping("confirmInterview")
-    public int confirmInterview(@RequestParam("id")String id){
+    public int confirmInterview(@RequestParam("id") String id) {
         Interview interview = interviewService.getById(id);
-        interview.setStatus((short)1);
+        interview.setStatus((short) 1);
         // todo 这里应该是生成员工的账号和密码以及员工的网址 然后发送到游客的邮箱中
         return interviewService.update(interview);
     }

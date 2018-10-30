@@ -39,6 +39,13 @@
                                     <form id="infoForm" action="<%=basePath%>/user/ajaxResume" method="post" enctype="multipart/form-data" class="form-horizontal" onsubmit="return editResume()">
                                         <input type="text" class="hidden" value="${resume.resumeId}" name="resumeId" placeholder="">
                                         <input type="text" class="hidden" value="${resume.visitorId}" name="visitorId" placeholder="">
+                                        <div class="form-group text-center">
+                                            <div class="col-sm-2"></div>
+                                            <label class="col-sm-2 control-label">简历名:</label>
+                                            <div class="col-sm-2">
+                                                <input name="title" class="form-control" placeholder="" value="${resume.title}" />
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label class="col-sm-1 control-label">真实姓名:</label>
                                             <div class="col-sm-2">

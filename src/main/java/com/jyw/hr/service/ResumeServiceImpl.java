@@ -34,10 +34,14 @@ public class ResumeServiceImpl implements IResume {
     }
 
     @Override
-    public Resume getResumeByVisitor(String visitorId) {
+    public List<Resume> listByVisitor(String visitorId) {
         ResumeExample example = new ResumeExample();
         example.or().andVisitorIdEqualTo(visitorId);
-        List<Resume> resumes = resumeMapper.selectByExample(example);
-        return resumes.isEmpty() ? null : resumes.get(0);
+        return resumeMapper.selectByExample(example);
+    }
+
+    @Override
+    public Resume getById(String resumeId) {
+        return resumeMapper.selectByPrimaryKey(resumeId);
     }
 }
