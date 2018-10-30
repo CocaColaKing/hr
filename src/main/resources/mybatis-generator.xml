@@ -41,11 +41,11 @@
             <!--<columnOverride column="age" property="age" javaType="java.lang.Integer"/>-->
         <!--</table>-->
         <!--<table tableName="product"/>-->
-        <table tableName="visitor" />
+        <!--<table tableName="visitor" />-->
         <table tableName="interview" />
-        <table tableName="resume" />
-        <table tableName="resume_send" />
-        <table tableName="recruitment" />
+        <!--<table tableName="resume" />-->
+        <!--<table tableName="resume_send" />-->
+        <!--<table tableName="recruitment" />-->
         <!--<table tableName="pay_record">
             <columnOverride column="record_type" property="recordType" javaType="com.jywhy.springbootdemo.enumeration.RecorderType"/>
         </table>-->

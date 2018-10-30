@@ -23,7 +23,7 @@ public class LoginController extends BaseController {
             return 0;
         } else {
 
-            session.setAttribute("visitor", user);
+            session.setAttribute("visitor", u);
 
             return 1;
         }

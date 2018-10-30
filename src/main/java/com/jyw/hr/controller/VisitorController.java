@@ -127,4 +127,13 @@ public class VisitorController extends BaseController {
         send.setResumeId(resume.getResumeId());
         return resumeSendService.add(send);
     }
+
+    @ResponseBody
+    @PostMapping("confirmInterview")
+    public int confirmInterview(@RequestParam("id")String id){
+        Interview interview = interviewService.getById(id);
+        interview.setStatus((short)1);
+        // todo 这里应该是生成员工的账号和密码以及员工的网址 然后发送到游客的邮箱中
+        return interviewService.update(interview);
+    }
 }

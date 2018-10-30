@@ -51,4 +51,9 @@ public class InterviewServiceImpl implements IInterview {
         example.or().andResumeSendIdIn(resumeSendIds);
         return interviewMapper.selectByExample(example);
     }
+
+    @Override
+    public Interview getById(String interviewId) {
+        return interviewMapper.selectByPrimaryKey(interviewId);
+    }
 }

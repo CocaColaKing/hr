@@ -1,6 +1,5 @@
 package com.jyw.hr.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class Interview {
@@ -10,7 +9,7 @@ public class Interview {
 
     private String note;
 
-    private BigDecimal status;
+    private Short status;
 
     private Date createTime;
 
@@ -40,11 +39,11 @@ public class Interview {
         this.note = note == null ? null : note.trim();
     }
 
-    public BigDecimal getStatus() {
+    public Short getStatus() {
         return status;
     }
 
-    public void setStatus(BigDecimal status) {
+    public void setStatus(Short status) {
         this.status = status;
     }
 

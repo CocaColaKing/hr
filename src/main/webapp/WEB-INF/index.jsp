@@ -91,17 +91,6 @@
                 }else if(res == 1 ){
                     location.href="<%=basePath%>/user/index";
                 }
-                <%--if(res.result==-1){--%>
-                    <%--alert("用户名或密码错误");--%>
-                <%--}else if(res.result==-2){--%>
-                    <%--alert("帐号未通过审核，需要联系管理员");--%>
-                <%--}else if(res.result==0){--%>
-                    <%--location.href="<%=basePath%>/member/index";--%>
-                <%--}else if(res.result==1){--%>
-                    <%--location.href="<%=basePath%>/admin/index";--%>
-                <%--}else {--%>
-                    <%--location.href="<%=basePath%>/bid_open/index";--%>
-                <%--}--%>
             },
             error:function () {
 

@@ -36,7 +36,7 @@
                         <section class="">
                             <section class="scrollable wrapper w-f">
                                 <section class="panel panel-default padder padder-v">
-                                    <form id="infoForm" action="<%=basePath%>/user/ajaxResume" method="post" enctype="multipart/form-data" class="form-horizontal" onsubmit="return addMember()">
+                                    <form id="infoForm" action="<%=basePath%>/user/ajaxResume" method="post" enctype="multipart/form-data" class="form-horizontal" onsubmit="return editResume()">
                                         <input type="text" class="hidden" value="${resume.resumeId}" name="resumeId" placeholder="">
                                         <input type="text" class="hidden" value="${resume.visitorId}" name="visitorId" placeholder="">
                                         <div class="form-group">
@@ -91,7 +91,7 @@
 
                                             <label class="col-sm-1 control-label">手机号码:</label>
                                             <div class="col-sm-2">
-                                                <input class="form-control " name="mobile" value="" placeholder="" onkeyup="value=value.replace(/\D/g,'')">
+                                                <input class="form-control " name="mobile" value="${resume.mobile}" placeholder="" onkeyup="value=value.replace(/\D/g,'')">
                                             </div>
                                         </div>
 
@@ -131,6 +131,7 @@
 
                                         <div class="col-sm-12 text-center">
                                             <button type="submit" class="btn btn-primary" id="save">确认</button>
+                                            <button type="button" class="btn btn-primary" onclick="history.back()">返回</button>
                                         </div>
                                     </form>
                                 </section>
@@ -147,7 +148,7 @@
 <script src="<%=basePath%>/js/jquery.form.min.js"></script>
 
 <script>
-    function addMember() {
+    function editResume() {
 
 
 
@@ -169,7 +170,6 @@
 
 
         $("#infoForm").ajaxSubmit({
-            dataType:"json",
             success:function (res) {
 
                 if (res==1){

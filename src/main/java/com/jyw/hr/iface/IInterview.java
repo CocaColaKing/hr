@@ -38,4 +38,6 @@ public interface IInterview {
      * @return
      */
     List<Interview> listByResumeSendIds(List<String> resumeSendIds);
+
+    Interview getById(String interviewId);
 }
