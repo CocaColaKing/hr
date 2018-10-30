@@ -157,11 +157,7 @@
             alert("手机号码必填");
             return false;
         }
-        var reg=/^([0-9]|[-])+$/g;
-        if(!reg.exec(tel)){
-            alert("电话号码错误");
-            return false;
-        }
+
         if(mobile.length!=11){
             alert("手机号码错误");
             return false;
